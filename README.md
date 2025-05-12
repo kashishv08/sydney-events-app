@@ -31,4 +31,19 @@ BOT_TOKEN=your-telegram-bot-token  # optional
 ## run the app
 node app.js
 
+## 📸 Screenshots
+
+##  Homepage
+![Homepage](./assets/Screenshot 2025-05-13 003928.png)
+
+##  Email to get ticket
+![ Email to get ticket](./assets/Screenshot 2025-05-13 005655.png)
+
+## Telegram Bot Response
+![Telegram Bot](./assets/Screenshot 2025-05-13 003958.png)
+![Telegram Bot](./assets/Screenshot 2025-05-13 004052.png)
+
+##  Event Showing
+![Event Showing](./assets/Screenshot 2025-05-13 005723.png)
+
 
