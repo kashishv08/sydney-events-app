@@ -34,7 +34,7 @@ node app.js
 ## 📸 Screenshots
 
 ##  Homepage
-![Homepage](assets/Screenshot 2025-05-13 003928.png)
+![Homepage](assets/Screenshot_2025-05-13_003928.png)
 
 ##  Email to get ticket
 ![ Email to get ticket](assets/Screenshot 2025-05-13 005655.png)
