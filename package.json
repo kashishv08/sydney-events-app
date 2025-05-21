@@ -7,7 +7,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm install && npx puppeteer install && nodemon app.js",
+    "start": "npx puppeteer install && nodemon app.js",
     "autoscrape": "node autoScrape.js"
   },
   "keywords": [],
@@ -24,9 +24,8 @@
     "langchain": "^0.3.24",
     "mongoose": "^8.14.2",
     "node-cron": "^4.0.0",
-    "node-telegram-bot-api": "^0.66.0",
-    "openai": "^4.98.0",
-    "puppeteer": "^21.3.8"
+    "node-telegram-bot-api": "^0.63.0",
+    "openai": "^4.98.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.10"

@@ -1,65 +1,32 @@
-const puppeteer = require("puppeteer");
+const axios = require("axios");
+const cheerio = require("cheerio");
 
 async function scrapeSydneyEvents() {
-  const browser = await puppeteer.launch({
-    headless: true,
-    args: ["--no-sandbox", "--disable-setuid-sandbox"],
-  });
-  const page = await browser.newPage();
+  const url = "https://www.eventbrite.com.au/d/australia--sydney/events/";
 
-  console.log("Navigating to the events page...");
-  await page.goto("https://www.eventbrite.com.au/d/australia--sydney/events/", {
-    waitUntil: "domcontentloaded",
-  });
+  try {
+    const { data: html } = await axios.get(url);
+    const $ = cheerio.load(html);
+    const events = [];
 
-  console.log("Waiting for event cards...");
-  await page.waitForSelector("div.small-card-mobile.eds-l-pad-all-2", {
-    timeout: 10000,
-  });
-
-  console.log("Page loaded. Scraping events...");
-  const events = await page.evaluate(() => {
-    const eventList = [];
-    const cards = document.querySelectorAll(
-      "div.small-card-mobile.eds-l-pad-all-2"
-    );
-
-    cards.forEach((card) => {
-      const linkTag = card.querySelector("a");
-      const link = linkTag?.href;
-
-      const title = card
-        .querySelector("div.Stack_root__1ksk7 a h3")
-        ?.innerText?.trim();
-      const date = card
-        .querySelector("div.Stack_root__1ksk7 p")
-        ?.innerText?.trim();
+    $("div.small-card-mobile.eds-l-pad-all-2").each((i, card) => {
+      const link = $(card).find("a").attr("href");
+      const title = $(card).find("div.Stack_root__1ksk7 a h3").text().trim();
+      const date = $(card).find("div.Stack_root__1ksk7 p").text().trim();
 
       if (title && date && link) {
-        eventList.push({ title, date, link });
+        events.push({ title, date, link });
       }
     });
 
-    return eventList;
-  });
-
-  await browser.close();
-
-  if (events.length === 0) {
-    console.log("No events found");
-  } else {
-    console.log("Events scraped:", events[0]);
+    console.log("Events scraped:", events[0] || "None found");
+    return events;
+  } catch (error) {
+    console.error("Error scraping with Cheerio:", error);
+    return [];
   }
-
-  return events;
 }
 
-scrapeSydneyEvents()
-  .then((events) => {
-    console.log("Final scraped events:", events[0]);
-  })
-  .catch((err) => {
-    console.error("Error in scraping:", err);
-  });
+// scrapeSydneyEvents();
 
 module.exports = scrapeSydneyEvents;
