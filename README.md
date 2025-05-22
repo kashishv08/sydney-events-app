@@ -4,7 +4,7 @@ This is a Node.js web application that scrapes events happening in Sydney from t
 
 ## 🛠️ Features
 
-- Scrapes live Sydney event data using Puppeteer
+- Scrapes live Sydney event data using Axios
 - Stores data in MongoDB Atlas
 - Displays events on a styled frontend using EJS
 - Telegram bot integration
@@ -13,7 +13,7 @@ This is a Node.js web application that scrapes events happening in Sydney from t
 
 - Node.js
 - Express.js
-- Puppeteer
+- Axios
 - MongoDB Atlas
 - EJS
 - Telegram Bot API
@@ -26,7 +26,7 @@ This is a Node.js web application that scrapes events happening in Sydney from t
 
 ## Create a .env file:
 MONGO_URI=your-mongodb-uri
-BOT_TOKEN=your-telegram-bot-token  # optional
+BOT_TOKEN=your-telegram-bot-token
 
 ## run the app
 node app.js
@@ -45,5 +45,7 @@ node app.js
 
 ##  Event Showing
 ![Event Showing](assets/Screenshot_2025-05-13_005723.png)
+
+## Hosted Project Link : https://sydney-events-app.onrender.com/ 
 
 
