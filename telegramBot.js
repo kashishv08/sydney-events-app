@@ -33,7 +33,7 @@ bot.on("message", async (msg) => {
       matchedEvents.forEach((event) => {
         bot.sendMessage(
           chatId,
-          `🎫 *${event.title}*\n📅 ${event.date}\n🔗 [Get Tickets](${event.link})`,
+          ` *${event.title}*\n ${event.date}\n [Get Tickets](${event.link})`,
           { parse_mode: "Markdown", disable_web_page_preview: false }
         );
       });
